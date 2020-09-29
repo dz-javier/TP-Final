@@ -1,0 +1,7 @@
+{
+  "name": "domoticApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
