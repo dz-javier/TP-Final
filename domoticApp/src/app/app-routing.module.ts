@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'sensores',
+    loadChildren: () => import('./sensores/sensores.module').then( m => m.SensoresPageModule)
+  },
+  {
+    path: 'luces',
+    loadChildren: () => import('./luces/luces.module').then( m => m.LucesPageModule)
+  },
 ];
 
 @NgModule({
