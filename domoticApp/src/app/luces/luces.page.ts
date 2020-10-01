@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DomoticAppService } from '../domotic-app.service';
 
 @Component({
   selector: 'app-luces',
@@ -7,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LucesPage implements OnInit {
 
-  constructor() { }
+  constructor(private domoticService: DomoticAppService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
   }

@@ -17,4 +17,4 @@ import { SensoresPage } from './sensores.page';
   ],
   declarations: [SensoresPage]
 })
-export class SensoresPageModule {}
+export class SensoresPageModule  {}
