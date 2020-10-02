@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { DomoticAppService } from '../domotic-app.service';
 import { Sensor } from '../model/sensor'
 @Component({
@@ -9,20 +10,39 @@ import { Sensor } from '../model/sensor'
 })
   
 export class SensoresPage implements OnInit {
-  private sensores: Array<Sensor> = [];
+  private sensores;
+  private bla;
   private tamanio = 15;
+  private intervalTimer;
+
   constructor(private domoticService: DomoticAppService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private loadingControler: LoadingController,
+  )
+  {
     
-               }
+  }
+               
 
   public async ngOnInit() {
-    this.domoticService.obtenerSensores().subscribe(datos => {
-      console.log(datos);
-      this.sensores = datos;
-      this.tamanio = this.sensores.length;  
-     });
-
+    const loading = await this.loadingControler.create();
+    await loading.present();
+    
+    this.activatedRoute.paramMap.subscribe(
+      paramMap => {
+        this.bla = this.domoticService.obtenerSensores()
+          .subscribe(datos => {
+            this.sensores = datos;
+            this.tamanio = this.sensores.length;
+            loading.dismiss();
+            
+          });
+      });
   }
+
+  public actualizarDatos() { 
+      
+  }
+
 
 }

@@ -1,5 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+
     <ion-title>
       domoticApp
     </ion-title>
@@ -25,11 +26,11 @@
       </ion-row>
       <ion-row style="justify-content: space-around; align-items: center;">
         <ion-col size="5">
-          <ion-button  expand="block" routerLink="/sensores">
+          <ion-button  expand="block" [routerLink]="['/sensores']" routerDirection="forward">
             <ion-icon slot="icon-only" name="thermometer-outline"></ion-icon>
           </ion-button></ion-col>
         <ion-col size="5">
-          <ion-button  expand="block" (click)="verSensores()">
+          <ion-button  expand="block" (click)="onClick()">
             <ion-icon  slot="icon-only" name="bulb-outline"></ion-icon>
           </ion-button>
         </ion-col>

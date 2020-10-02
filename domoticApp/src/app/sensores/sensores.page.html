@@ -1,19 +1,22 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Sensores</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" >
-  <ion-list>
-    
+<ion-content [fullscreen]="true">
   
-  <!-- <ion-item *ngFor="let sensor of sensores" [routerLink]="['/sensores',sensor.ID]"> -->
-
-    <!-- <ion-label>{{sensores[0].Tipo}}</ion-label> -->
-    <!-- <ion-label color ="danger">{{sensores[0].valor}} </ion-label> -->
-    <!-- <ion-label color ="danger">{{sensor.unidad}} </ion-label>  -->
-
-    <ion-label>{{sensores[3].ID}} {{tamanio}}</ion-label>
+  <ion-list>
+    <ion-item *ngFor="let sensor of sensores; trackBy:" [routerLink]="['/sensores']">
+     <ion-label>{{sensor.Tipo}}</ion-label>
+     <ion-label>{{sensor.valor}} {{sensor.unidad}} </ion-label>
+    </ion-item>
+    
   </ion-list>
+
+  
+
 </ion-content>
