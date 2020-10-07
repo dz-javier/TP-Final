@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { DomoticAppService } from '../domotic-app.service';
 import { Sensor } from '../model/sensor'
 @Component({
@@ -18,7 +18,7 @@ export class SensoresPage implements OnInit {
   constructor(private domoticService: DomoticAppService,
               private activatedRoute: ActivatedRoute,
               private loadingControler: LoadingController,
-  )
+              private alertController: AlertController)
   {
     
   }
@@ -27,7 +27,6 @@ export class SensoresPage implements OnInit {
   public async ngOnInit() {
     const loading = await this.loadingControler.create();
     await loading.present();
-    
     this.activatedRoute.paramMap.subscribe(
       paramMap => {
         this.bla = this.domoticService.obtenerSensores()
@@ -38,6 +37,8 @@ export class SensoresPage implements OnInit {
             
           });
       });
+      
+        
   }
 
   public actualizarDatos() { 
