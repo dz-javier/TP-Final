@@ -8,6 +8,7 @@ app.use(bodyParser.json());
 
 app.use(cors(corsOptions));
 
+
 var luces = [{
   "ID":"1",
   "ubicacion":"Patio",
@@ -83,8 +84,7 @@ var productos =[{
     "precio": 5600,
     "cantidad": 0,
     "imagen": "https://s3.amazonaws.com/gpcdn-dev/avenida/products/photos/5d/a4d/9c0e5e8a4ddd51b9092d5d743c6bcca5_l.png"
-    
-    
+  
     },
   {
     "id": "5",
@@ -126,12 +126,20 @@ var productos =[{
 
 
 var id =20;
-function intervalFunc() {
+function intervaloSensores() {
   // función que cambia algunos datos.
+  console.log("por aquí paso")
+  sensores.forEach(item=>{
+       if(item.Tipo=="Temperatura"){
+          item.valor = Number((Math.random()-0.5)+24).toFixed(2);
+          console.log(item)
+        }
+      });
   
 }
 
-setInterval(intervalFunc, 1500);
+setInterval(intervaloSensores, 1000);
+
 // sensores
 app.get("/sensores",function(req,res){
 
