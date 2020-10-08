@@ -41,6 +41,11 @@ export class SensoresPage implements OnInit {
         
   }
 
+  public trackByFunc(index, item) {
+    return index;
+
+  }
+
   public actualizarDatos() { 
       
   }

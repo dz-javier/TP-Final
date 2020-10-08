@@ -133,7 +133,7 @@ function intervaloSensores() {
   sensores.forEach(item=>{
        if(item.Tipo=="Temperatura"){
           item.valor = Number((Math.random()-0.5)+24).toFixed(2);
-          console.log(item)
+          //console.log(item)
         }
       }); 
 }
@@ -166,8 +166,6 @@ app.get("/sensores/:ID",function(req,res){
           return; 
       }
     });
-
-
 
 // luces
 app.get("/luces",function(req,res){
