@@ -4,6 +4,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+  
+  <ion-list>
+    <ion-item *ngFor="let luz of luces" [routerLink]="['/luces']">
+     <ion-label>{{luz.ubicación}}</ion-label>
+     <ion-label>{{luz.estado}} </ion-label>
+    </ion-item>
+    
+  </ion-list>
+
+  
 
 </ion-content>

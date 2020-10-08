@@ -125,17 +125,17 @@ var productos =[{
 
 
 
+var idSensores =20;
 var idLuces =20;
+
 function intervaloSensores() {
   // función que cambia algunos datos.
-  console.log("por aquí paso")
   sensores.forEach(item=>{
        if(item.Tipo=="Temperatura"){
           item.valor = Number((Math.random()-0.5)+24).toFixed(2);
           //console.log(item)
         }
-      });
-  
+      }); 
 }
 
 setInterval(intervaloSensores, 1000);
@@ -193,26 +193,54 @@ app.get("/luces/:ID",function(req,res){
     }
   });
 
-
-  app.post("/luces",function(req,res){
+app.post("/luces",function(req,res){
     console.log(req.body);
-      setTimeout(function(){
-          if((req.body.nombre!= undefined&&req.body.nombre!= "") &&(req.body.precio!= undefined) 
-        &&  (req.body.cantidad!= undefined) && (req.body.imagen!= undefined&&req.body.imagen!= "")){
-       
-        ID = id +1;
-         
-        
-        var data = {"ID":ID,"nombre":req.body.nombre,"precio":req.body.precio,"cantidad":req.body.cantidad,"imagen":req.body.imagen};
-          productos.push(data);
-                  res.send(data);    
-       
-              return;
-          }
-          res.send({'type': 'error'});
-      },2000);
-      
-  });
+    if((req.body.ubicacion!= undefined&&req.body.ubicacion!= "") &&(req.body.estado != undefined) 
+        &&  (req.body.IP!= undefined)) {
+        idLuces = idLuces +1;
+        var data = {"ID":idLuces,"ubicacion":req.body.ubicacion,"estado":req.body.estado,"IP":req.body.IP};
+        luces.push(data);
+        res.send(data);    
+        return;
+        }
+    res.send({'type': 'error'});    
+});
+
+app.put("/luces/:ID",function(req,res){
+  console.log(req.params.id);
+  console.log(req.body);
+  if((req.body.nombre!= undefined&&req.body.nombre!= "") &&(req.body.imagen!= undefined&&req.body.imagen!= "") 
+			&&  (req.body.precio!= undefined) && (req.body.cantidad!= undefined)){
+				for(var i =0;i<luces.length;i++){
+					if(req.params.ID== luces[i].ID){
+            console.log("Actualiza luz")
+						luces[i].ubicacion=req.body.ubicacion;
+						luces[i].IP=req.body.IP;
+						luces[i].estado=req.body.estado;
+						res.send(req.body);    
+						return;
+					}
+				}
+		
+      }
+        res.send({'type': 'error'});
+});
+
+app.delete("/luces/:ID",function(req,res){
+  console.log(req.params.id);
+  if(req.params.id!= undefined){
+	  for(var i =0;i<luces.length;i++){
+					if(req.params.ID== luces[i].ID){
+						luces.splice(i,1);
+        	var data = {"type":"ok"};
+							res.send(data);    
+							return;
+					}
+				}
+      }
+  res.send({'type': 'error'});
+});
+
 // productos
 app.get("/productos",function(req,res){
     setTimeout(function(){
@@ -245,9 +273,6 @@ app.get("/productos/:id",function(req,res){
   
 });
 
-
-
-
 app.post("/login",function(req,res){
     setTimeout(function(){
         console.log("Llego al servidor "+JSON.stringify(req.body));
@@ -271,7 +296,6 @@ app.post("/login",function(req,res){
     },2000);
     
 });
-
 
 app.post("/productos",function(req,res){
   console.log(req.body);
@@ -321,8 +345,6 @@ app.put("/productos/:id",function(req,res){
     },2000);
     
 });
-
-
 
 app.delete("/productos/:id",function(req,res){
   console.log(req.params.id);
