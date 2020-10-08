@@ -17,5 +17,9 @@ export class DomoticAppService {
   public obtenerSensores() {
     return this.httpClient.get<Sensor[]>(this.path + "/sensores"); 
      
+  }
+  public obtenerLuces() {
+    return this.httpClient.get<Sensor[]>(this.path + "/luces"); 
+     
  }
 }

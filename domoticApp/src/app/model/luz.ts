@@ -1,6 +1,6 @@
 export class Luz{
-  public Tipo: string;
-  public ID: number;
+  public ubicacion: string;
+  public ID: string;
   public estado: string;
   public IP: string;
 } 

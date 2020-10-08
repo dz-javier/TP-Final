@@ -125,14 +125,14 @@ var productos =[{
 
 
 
-var id =20;
+var idLuces =20;
 function intervaloSensores() {
   // función que cambia algunos datos.
   console.log("por aquí paso")
   sensores.forEach(item=>{
        if(item.Tipo=="Temperatura"){
           item.valor = Number((Math.random()-0.5)+24).toFixed(2);
-          console.log(item)
+          //console.log(item)
         }
       });
   
@@ -194,7 +194,25 @@ app.get("/luces/:ID",function(req,res){
   });
 
 
-
+  app.post("/luces",function(req,res){
+    console.log(req.body);
+      setTimeout(function(){
+          if((req.body.nombre!= undefined&&req.body.nombre!= "") &&(req.body.precio!= undefined) 
+        &&  (req.body.cantidad!= undefined) && (req.body.imagen!= undefined&&req.body.imagen!= "")){
+       
+        ID = id +1;
+         
+        
+        var data = {"ID":ID,"nombre":req.body.nombre,"precio":req.body.precio,"cantidad":req.body.cantidad,"imagen":req.body.imagen};
+          productos.push(data);
+                  res.send(data);    
+       
+              return;
+          }
+          res.send({'type': 'error'});
+      },2000);
+      
+  });
 // productos
 app.get("/productos",function(req,res){
     setTimeout(function(){
