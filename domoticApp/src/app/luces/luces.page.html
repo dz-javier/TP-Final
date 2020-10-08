@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Luces</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -7,9 +10,10 @@
 <ion-content [fullscreen]="true">
   
   <ion-list>
-    <ion-item *ngFor="let luz of luces" [routerLink]="['/luces']">
-     <ion-label>{{luz.ubicación}}</ion-label>
+    <ion-item *ngFor="let luz of luces;" [routerLink]="['/luces']">
+     <ion-label>{{luz.ubicacion}}</ion-label>
      <ion-label>{{luz.estado}} </ion-label>
+     
     </ion-item>
     
   </ion-list>

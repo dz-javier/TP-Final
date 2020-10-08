@@ -19,7 +19,7 @@ export class DomoticAppService {
      
   }
   public obtenerLuces() {
-    return this.httpClient.get<Sensor[]>(this.path + "/luces"); 
+    return this.httpClient.get<Luz[]>(this.path + "/luces"); 
      
  }
 }
