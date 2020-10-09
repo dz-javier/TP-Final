@@ -12,8 +12,10 @@
   <ion-list>
     <ion-item *ngFor="let luz of luces;" [routerLink]="['/luces']">
      <ion-label>{{luz.ubicacion}}</ion-label>
-     <ion-label>{{luz.estado}} </ion-label>
-     
+     <ion-toggle [(ngModel)]="isLightOn(luz)" checked=""></ion-toggle>
+     <ion-button (click)="onClick()">
+       <ion-icon size="small" slot="icon-only" name="settings-sharp"></ion-icon>
+     </ion-button>
     </ion-item>
     
   </ion-list>

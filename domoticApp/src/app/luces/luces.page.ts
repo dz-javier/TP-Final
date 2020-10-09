@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { DomoticAppService } from '../domotic-app.service';
+import { Luz } from '../model/luz';
 
 @Component({
   selector: 'app-luces',
@@ -28,9 +29,11 @@ export class LucesPage implements OnInit {
               loading.dismiss();
             });
       });
-        
-          
-    }
+  }
+
+  public isLigthOn(luz: Luz) : boolean{ 
+    return luz.estado == "on";
+  }
 }
 
 

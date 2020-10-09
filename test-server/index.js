@@ -17,8 +17,8 @@ var luces = [{
 },
 {
   "ID":"2",
-  "ubicacion":"Patio",
-  "estado":"on",
+  "ubicacion":"Patio trasero",
+  "estado":"off",
   "IP":"192.168.1.49"
 },
 {

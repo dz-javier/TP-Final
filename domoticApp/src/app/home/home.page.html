@@ -18,19 +18,37 @@
       <ion-row style="background-color:silver;" >
         <ion-col size="6">
           <ion-label color="primary">Sensores</ion-label>
+          <ion-list>
+            <ion-item *ngFor="let sensor of sensores;">
+             <ion-label>{{sensor.Tipo}}</ion-label>
+             <ion-label>{{sensor.valor}} {{sensor.unidad}} </ion-label>
+            </ion-item>
+            
+          </ion-list>
+          
                  
         </ion-col>
         <ion-col size="6">
           <ion-label color="primary">Luces</ion-label>
+          <ion-list>
+            <ion-item *ngFor="let luz of luces;">
+             <ion-label>{{luz.ubicacion}} {{luz.estado}}</ion-label>
+            </ion-item>
+            
+          </ion-list>
+          
         </ion-col>
       </ion-row>
       <ion-row style="justify-content: space-around; align-items: center;">
         <ion-col size="5">
-          <ion-button  size="large" expand="block" [routerLink]="['/sensores']" routerDirection="forward">
+         <ion-button  size="large" expand="block" [routerLink]="['/sensores']" routerDirection="forward">  
+            <ion-badge class="infoDevices" color="secondary" mode="md">{{cantSensores}}</ion-badge>
             <ion-icon slot="icon-only" name="thermometer-outline"></ion-icon>
-          </ion-button></ion-col>
+          </ion-button>
+         </ion-col>
         <ion-col size="5">
           <ion-button  size="large" expand="block" [routerLink]="['/luces']">
+            <ion-badge class="infoDevices" color="secondary" mode="md">{{cantLuces}}</ion-badge>
             <ion-icon  slot="icon-only" name="bulb-outline"></ion-icon>
           </ion-button>
         </ion-col>
