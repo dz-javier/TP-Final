@@ -10,7 +10,7 @@ import { Luz } from './model/luz';
 })
 export class DomoticAppService {
   
-  private path = "http://localhost:3000";
+  private path = "http://192.168.1.59:3000";
   
   constructor(private httpClient: HttpClient) { }
  
