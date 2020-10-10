@@ -33,35 +33,35 @@ var sensores = [{
     "ID": "1",
     "valor": 24.0,
     "unidad": "°C",
-    "estado": "Ok"
+    "estado": "off"
     },
     {
     "Tipo": "Humedad",
     "ID": "2",
     "valor": 45,
     "unidad": "%",
-    "estado": "Ok"
+    "estado": "on"
     },  
     {
     "Tipo": "Velocidad del viento",
     "ID": "3",
     "valor": 9.7,
     "unidad": "km/h",
-    "estado": "Ok"
+    "estado": "on"
     },
     {
     "Tipo": "Precipitaciones",
     "ID": "4",
     "valor":  0,
     "unidad": "mm",
-    "estado": "Ok"
+    "estado": "off"
     },
     {
     "Tipo": "Presión atmosférica",
     "ID": "5",
     "valor": 1002.2,
     "unidad": "hPa",
-    "estado": "Ok"
+    "estado": "on"
     }]
 
 var productos =[{

@@ -8,30 +8,30 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="padding" color="light">
-  
-  <div id="container a" style="height: 100%;">
-    
-    <ion-grid style="height: 100%;">
-      <ion-row >
-        <ion-col size="12">Resumen</ion-col>
-      </ion-row>
-      <ion-row style="background-color:silver;" >
-        <ion-col size="6">
-          <ion-label color="primary">Sensores</ion-label>
-          <ion-list>
-            <ion-item *ngFor="let sensor of sensores;">
-             <ion-label>{{sensor.Tipo}}</ion-label>
-             <ion-label>{{sensor.valor}} {{sensor.unidad}} </ion-label>
+    <ion-grid  style="height: 100%;">
+      <ion-row   >
+        <ion-col color="light" size="6">
+          <ion-label color="primary">
+            Sensores habilitados
+          </ion-label>
+          <ion-list   lines="none">
+            
+           
+           
+            <ion-item color="light" *ngFor="let sensor of sensores;">
+             <ion-label > 
+               <h1>{{sensor.valor}} {{sensor.unidad}} </h1>
+              </ion-label>
             </ion-item>
             
           </ion-list>
           
                  
         </ion-col>
-        <ion-col size="6">
-          <ion-label color="primary">Luces</ion-label>
+        <ion-col color="light" size="6">
+          <ion-label color="primary">Luces encendidas</ion-label>
           <ion-list>
-            <ion-item *ngFor="let luz of luces;">
+            <ion-item color="light"  *ngFor="let luz of luces;">
              <ion-label>{{luz.ubicacion}} {{luz.estado}}</ion-label>
             </ion-item>
             
@@ -53,7 +53,7 @@
           </ion-button>
         </ion-col>
       </ion-row >
-      <ion-row style="justify-content: space-around; align-items: start;">
+      <!-- <ion-row style="justify-content: space-around; align-items: start;">
         <ion-col size="5">
         <ion-button size="large" expand="block" (click)="onClick()">
           <ion-icon   slot="icon-only" name="videocam-outline"></ion-icon>
@@ -64,9 +64,9 @@
           <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
         </ion-button>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
    
     </ion-grid>
-  </div>
+
   
 </ion-content>
