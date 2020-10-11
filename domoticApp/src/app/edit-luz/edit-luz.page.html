@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/luces"> </ion-back-button>
+    </ion-buttons>
+    <ion-title>{{luz.ubicacion}}</ion-title>
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" position="stacked">Ubicación</ion-label>
+      <ion-input [(ngModel)]="luz.ubicacion"></ion-input>
+   </ion-item>   
+   <ion-item>
+  <ion-label color="primary" position="stacked">Dirección IP</ion-label>
+    <ion-input type="email" [(ngModel)]="luz.IP" pattern="^[0-9][0-9][0-9][.][0-9][0-9][0-9][.][0-9][0-9][0-9]{1}$" #testPatern="ngModel" ></ion-input>
+    <div  *ngIf="testPatern.errors?.pattern"> 
+      Dirección de IP mal formateada.
+   </div> 
+ </ion-item>   
+ <ion-toggle></ion-toggle>
+ </ion-list>
+ <ion-button (click)="borrarLuz(luz)"  [routerLink]="['/luces']">
+  <ion-icon slot="end" name="trash"></ion-icon>
+  Borrar
+</ion-button>
+<ion-button (click)="editarLuz(luz)"   [routerLink]="['/luces']"  >
+  <ion-icon slot="end" name="save"></ion-icon>
+  Guardar
+</ion-button>
+</ion-content>

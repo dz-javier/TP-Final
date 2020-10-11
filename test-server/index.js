@@ -194,7 +194,7 @@ app.get("/luces/:ID",function(req,res){
   });
 
 app.post("/luces",function(req,res){
-    console.log(req.body);
+    console.log(req.body.IP);
     if((req.body.ubicacion!= undefined&&req.body.ubicacion!= "") &&(req.body.estado != undefined) 
         &&  (req.body.IP!= undefined)) {
         idLuces = idLuces +1;
@@ -207,12 +207,11 @@ app.post("/luces",function(req,res){
 });
 
 app.put("/luces/:ID",function(req,res){
-  console.log(req.params.id);
-  console.log(req.body);
-  if((req.body.nombre!= undefined&&req.body.nombre!= "") &&(req.body.imagen!= undefined&&req.body.imagen!= "") 
-			&&  (req.body.precio!= undefined) && (req.body.cantidad!= undefined)){
-				for(var i =0;i<luces.length;i++){
-					if(req.params.ID== luces[i].ID){
+  
+  if((req.body.ubicacion!= undefined)  
+			&&  (req.body.IP!= undefined) && (req.body.estado!= undefined)){
+				for(var i=0;i<luces.length;i++){
+					if(req.params.ID == luces[i].ID){
             console.log("Actualiza luz")
 						luces[i].ubicacion=req.body.ubicacion;
 						luces[i].IP=req.body.IP;
@@ -227,14 +226,14 @@ app.put("/luces/:ID",function(req,res){
 });
 
 app.delete("/luces/:ID",function(req,res){
-  console.log(req.params.id);
-  if(req.params.id!= undefined){
+  console.log(req.params.ID);
+  if(req.params.ID!= undefined){
 	  for(var i =0;i<luces.length;i++){
 					if(req.params.ID== luces[i].ID){
 						luces.splice(i,1);
-        	var data = {"type":"ok"};
-							res.send(data);    
-							return;
+        	  var data = {"type":"ok"};
+            res.send(data);
+						return;
 					}
 				}
       }

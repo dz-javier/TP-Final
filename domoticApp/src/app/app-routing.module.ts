@@ -8,10 +8,6 @@ const routes: Routes = [
       {
         path: "",
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
-      },
-      {
-        path: "sensores",
-        loadChildren: () => import('./sensores/sensores.module').then(m => m.SensoresPageModule)
       }
     ]
   },
@@ -27,7 +23,22 @@ const routes: Routes = [
   },
   {
     path: 'luces',
-    loadChildren: () => import('./luces/luces.module').then( m => m.LucesPageModule)
+    children: [
+      {
+        path: "",
+        loadChildren: () => import('./luces/luces.module').then( m => m.LucesPageModule)
+      },
+      {
+
+        path: ":ID",
+        loadChildren: () => import('./edit-luz/edit-luz.module').then(m => m.EditLuzPageModule)
+      }
+    ]
+  },
+
+  {
+    path: 'edit-luz',
+    loadChildren: () => import('./edit-luz/edit-luz.module').then( m => m.EditLuzPageModule)
   },
 ];
 

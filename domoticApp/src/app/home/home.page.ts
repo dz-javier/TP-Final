@@ -30,9 +30,10 @@ export class HomePage implements OnInit {
       paramMap => {
         this.bla = this.domoticService.obtenerSensores()
           .subscribe(datos => {
-            this.sensores = datos;
-            this.cantSensores = datos.length;
-            loading.dismiss();
+              this.sensores = datos;
+              this.cantSensores = datos.length;
+              loading.dismiss();  
+            
           });
         
       });

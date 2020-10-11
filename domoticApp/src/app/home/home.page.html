@@ -1,8 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-
+  <ion-toolbar color="light"  >
     <ion-title>
-      domoticApp
+     <p align="center">domoticApp</p> 
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -49,7 +48,7 @@
         <ion-col size="5">
           <ion-button  size="large" expand="block" [routerLink]="['/luces']">
             <ion-badge class="infoDevices" color="secondary" mode="md">{{cantLuces}}</ion-badge>
-            <ion-icon  slot="icon-only" name="bulb-outline"></ion-icon>
+          <ion-icon  slot="icon-only" name="bulb-outline"></ion-icon>
           </ion-button>
         </ion-col>
       </ion-row >
