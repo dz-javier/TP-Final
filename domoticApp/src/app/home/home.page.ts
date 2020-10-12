@@ -16,11 +16,24 @@ export class HomePage implements OnInit {
   private sensores: Array<Sensor>;
   private luces: Array<Luz>;
   private cantLuces;
-  private bla;
+  
   constructor(private loadingControler: LoadingController,
               private activatedRoute: ActivatedRoute,
               private domoticService: DomoticAppService) {
-
+  setInterval(() => { 
+    this.domoticService.obtenerSensores().subscribe(
+      datos => {
+        this.sensores = datos;
+        this.cantSensores = datos.length;
+      });
+      this.domoticService.obtenerLuces()
+      .subscribe(datos => {
+        this.luces = datos;
+        this.luces.filter
+        this.cantLuces = datos.length;
+      });
+      }, 3000); // actualizar cada 3 segundos
+    
    }
   
   public async ngOnInit() { 
@@ -28,7 +41,8 @@ export class HomePage implements OnInit {
     await loading.present();
     this.activatedRoute.paramMap.subscribe(
       paramMap => {
-        this.bla = this.domoticService.obtenerSensores()
+        let obs;
+        obs = this.domoticService.obtenerSensores()
           .subscribe(datos => {
               this.sensores = datos;
               this.cantSensores = datos.length;
@@ -40,7 +54,8 @@ export class HomePage implements OnInit {
       await loading.present();
       this.activatedRoute.paramMap.subscribe(
         paramMap => {
-          this.bla = this.domoticService.obtenerLuces()
+          let obs;
+          obs = this.domoticService.obtenerLuces()
             .subscribe(datos => {
               this.luces = datos;
               this.cantLuces = datos.length;

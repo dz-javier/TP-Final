@@ -30,18 +30,32 @@ export class LucesPage implements OnInit {
               loading.dismiss();
             });
       });
+      setInterval(() => { 
+          this.domoticService.obtenerLuces()
+          .subscribe(datos => {
+            this.luces = datos;
+            this.luces.filter
+          });
+          }, 3000);
   }
-
-  public async isLigthOn(luz: Luz){ 
-    alert(luz.estado);
+  public isLightOn(luz: Luz){ 
+    //alert(luz.estado);
     return (luz.estado == "on");
   }
-  
   public async turnLight(luz: Luz){ 
-    alert(luz.estado);
-    //return luz.estado == "on";
+    if (luz.estado == "on")
+      luz.estado = "off";
+    else
+      if (luz.estado == "off")
+          luz.estado = "on";
+    
+         
+    this.domoticService.editarLuz(luz).subscribe(response => {
+      this.domoticService.obtenerLuces()
+    });
+      
+      
   }
-
   public async agregarLuz() {
     let luz: Luz = new Luz();
     luz.ubicacion = "Living";
@@ -57,16 +71,18 @@ export class LucesPage implements OnInit {
         },
         {
           name: 'IP',
-          placeholder: 'IP',
+          placeholder: 'IP'
         },
         {
           name: 'estado',
-          placeholder: 'estado',
+          placeholder: 'Estado: off',
+          disabled: true
         }
       ],
+
       buttons: [
         {
-          text: "OK",
+          text: "Agregar",
           handler: data => {
             luz.ubicacion = data.ubicacion;
             luz.IP = data.IP;
@@ -77,7 +93,7 @@ export class LucesPage implements OnInit {
                });
           } 
         },
-        "Cancel"]
+        "Cancelar"]
     });
     
     (await alert).present();

@@ -1,38 +1,46 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="light"  >
+  <ion-toolbar  >
     <ion-title>
      <p align="center">domoticApp</p> 
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="padding" color="light">
+<ion-content [fullscreen]="true" class="padding" >
     <ion-grid  style="height: 100%;">
       <ion-row   >
-        <ion-col color="light" size="6">
+        <ion-col  size="6">
           <ion-label color="primary">
             Sensores habilitados
           </ion-label>
           <ion-list   lines="none">
-            
-           
-           
-            <ion-item color="light" *ngFor="let sensor of sensores;">
-             <ion-label > 
-               <h1>{{sensor.valor}} {{sensor.unidad}} </h1>
-              </ion-label>
-            </ion-item>
-            
-          </ion-list>
+            <div *ngFor="let sensor of sensores;">
+              <div>
+                <ion-item  *ngIf="sensor.estado=='on';">
+                  <ion-label > 
+                    <h1>{{sensor.valor}} {{sensor.unidad}} </h1>
+                   </ion-label>
+                 </ion-item>
+              </div>
+            </div>
+        </ion-list>
           
                  
         </ion-col>
-        <ion-col color="light" size="6">
+        <ion-col  size="6">
           <ion-label color="primary">Luces encendidas</ion-label>
-          <ion-list>
-            <ion-item color="light"  *ngFor="let luz of luces;">
-             <ion-label>{{luz.ubicacion}} {{luz.estado}}</ion-label>
-            </ion-item>
+          <ion-list lines="none">
+            <div  *ngFor="let luz of luces;">
+              <div>
+                <ion-item   *ngIf="luz.estado=='on';">
+                <ion-label>
+                <h1> {{luz.ubicacion}} </h1> 
+                </ion-label>
+              </ion-item>
+              </div>
+            </div>
+            
+              
             
           </ion-list>
           
@@ -40,13 +48,13 @@
       </ion-row>
       <ion-row style="justify-content: space-around; align-items: center;">
         <ion-col size="5">
-         <ion-button  size="large" expand="block" [routerLink]="['/sensores']" routerDirection="forward">  
+         <ion-button  expand="block" [routerLink]="['/sensores']" routerDirection="forward">  
             <ion-badge class="infoDevices" color="secondary" mode="md">{{cantSensores}}</ion-badge>
             <ion-icon slot="icon-only" name="thermometer-outline"></ion-icon>
           </ion-button>
          </ion-col>
         <ion-col size="5">
-          <ion-button  size="large" expand="block" [routerLink]="['/luces']">
+          <ion-button   expand="block" [routerLink]="['/luces']">
             <ion-badge class="infoDevices" color="secondary" mode="md">{{cantLuces}}</ion-badge>
           <ion-icon  slot="icon-only" name="bulb-outline"></ion-icon>
           </ion-button>

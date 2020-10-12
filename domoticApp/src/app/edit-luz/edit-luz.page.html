@@ -20,14 +20,29 @@
       Dirección de IP mal formateada.
    </div> 
  </ion-item>   
- <ion-toggle></ion-toggle>
+ <ion-item>
+  <ion-label color="primary" >Estado</ion-label>
+  <ion-toggle slot="end" (ionChange)="editarLuz(luz)" [checked]="luz.estado=='on'"></ion-toggle>
+   
+ </ion-item>
+ 
  </ion-list>
- <ion-button (click)="borrarLuz(luz)"  [routerLink]="['/luces']">
-  <ion-icon slot="end" name="trash"></ion-icon>
-  Borrar
-</ion-button>
-<ion-button (click)="editarLuz(luz)"   [routerLink]="['/luces']"  >
-  <ion-icon slot="end" name="save"></ion-icon>
-  Guardar
-</ion-button>
+ <ion-grid fixed>
+   <ion-row style="justify-content: space-around; align-items: center;">
+     <ion-col size="5">
+      <ion-button  expand="block" (click)="borrarLuz(luz)">
+        <ion-icon slot="icon-only" name="trash">Borrar</ion-icon>
+        
+      </ion-button>
+     </ion-col>
+     
+     <ion-col size="5">
+       <ion-button  expand="block" (click)="editarLuz(luz)" >
+        <ion-icon slot="icon-only" name="save">Guardar</ion-icon>
+    
+        </ion-button>
+     </ion-col>
+   </ion-row>
+ </ion-grid>
+ 
 </ion-content>

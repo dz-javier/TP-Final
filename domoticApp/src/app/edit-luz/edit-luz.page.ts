@@ -12,11 +12,19 @@ import { Luz } from '../model/luz';
 export class EditLuzPage implements OnInit {
   
   private luz: Luz = new Luz();
-  private bla;
+  
     
   constructor(private activatedRoute: ActivatedRoute,
               private loadingController: LoadingController,
-              private domoticService: DomoticAppService) { }
+              private domoticService: DomoticAppService) {
+                setInterval(() => { 
+                 this.domoticService.obtenerLuzPorID(this.luz.ID)
+                    .subscribe(datos => {
+                      this.luz = datos;
+                    });
+                    }, 3000); // actualizar cada 3 segundos  
+    
+               }
 
   public async ngOnInit() {
     const loading = await this.loadingController.create();
@@ -40,11 +48,7 @@ export class EditLuzPage implements OnInit {
         delete this.luz;
         loading.dismiss();
       });
-      }
-  
-    
-  
-
+  }
   public async editarLuz(luz: Luz) {
     const loading = await this.loadingController.create();
     await loading.present();
@@ -61,7 +65,7 @@ export class EditLuzPage implements OnInit {
            
               // });
         });
-      }
+  }
    
  
 }

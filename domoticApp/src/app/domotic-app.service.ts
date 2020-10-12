@@ -10,17 +10,20 @@ import { Luz } from './model/luz';
 })
 export class DomoticAppService {
   
-  private path = "http://localhost:3000";
   
+  //private path = "http://localhost:3000";
+  
+  private path = "http://192.168.1.64:3000";
+
   constructor(private httpClient: HttpClient) { }
  
   public obtenerSensores() {
-    
     return this.httpClient.get<Sensor[]>(this.path + "/sensores");   
-    
-    }
-    
-     
+  }
+  
+  public setIPserver(path: string) { 
+    this.path = "http://" + path;
+  }
   
   public obtenerLuces() {
     return this.httpClient.get<Luz[]>(this.path + "/luces"); 
@@ -42,4 +45,7 @@ export class DomoticAppService {
     return this.httpClient.post<Luz>(this.path + "/luces" , luz); 
   }
 
+  public editarSensor(sensor: Sensor) {
+    return this.httpClient.put<Sensor>(this.path + "/sensores/" + sensor.ID, sensor);
+  }
 }
