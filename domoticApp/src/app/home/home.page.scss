@@ -23,8 +23,16 @@
 
 .infoDevices{
   position: absolute;
-  top: 2px;
-  right: -15px;
+  top: 5px;
+  right: -10px;
+}
+.textDataSensors{
+  color : rgb(122, 122, 122);
+  font-size: 1.1em;
+}
+.textLigthsOn{
+  color : rgb(4, 124, 0);
+  font-size: 1.1em;
 }
 #container a {
   

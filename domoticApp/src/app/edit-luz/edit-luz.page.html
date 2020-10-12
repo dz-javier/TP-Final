@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/luces"> </ion-back-button>
+      <ion-back-button color = "primary" defaultHref="/luces"> </ion-back-button>
     </ion-buttons>
-    <ion-title>{{luz.ubicacion}}</ion-title>
+    <ion-title color = "primary">{{luz.ubicacion}}</ion-title>
   </ion-toolbar> 
 </ion-header>
 
@@ -30,7 +30,7 @@
  <ion-grid fixed>
    <ion-row style="justify-content: space-around; align-items: center;">
      <ion-col size="5">
-      <ion-button  expand="block" (click)="borrarLuz(luz)">
+      <ion-button  expand="block" (click)="borrarLuz(luz)" [routerLink]="['/luces']">
         <ion-icon slot="icon-only" name="trash">Borrar</ion-icon>
         
       </ion-button>

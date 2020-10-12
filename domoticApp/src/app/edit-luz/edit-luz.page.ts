@@ -45,7 +45,7 @@ export class EditLuzPage implements OnInit {
     await loading.present();
     this.domoticService.borrarLuz(luz).subscribe(
       response => { 
-        delete this.luz;
+       // delete this.luz;
         loading.dismiss();
       });
   }

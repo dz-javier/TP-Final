@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar  >
-    <ion-title>
+    <ion-title color="primary" >
      <p align="center">domoticApp</p> 
     </ion-title>
   </ion-toolbar>
@@ -11,14 +11,15 @@
       <ion-row   >
         <ion-col  size="6">
           <ion-label color="primary">
-            Sensores habilitados
+            <h2>Sensores habilitados</h2>
+          
           </ion-label>
           <ion-list   lines="none">
             <div *ngFor="let sensor of sensores;">
               <div>
                 <ion-item  *ngIf="sensor.estado=='on';">
-                  <ion-label > 
-                    <h1>{{sensor.valor}} {{sensor.unidad}} </h1>
+                  <ion-label class = textDataSensors > 
+                    {{sensor.valor}} {{sensor.unidad}} 
                    </ion-label>
                  </ion-item>
               </div>
@@ -28,13 +29,16 @@
                  
         </ion-col>
         <ion-col  size="6">
-          <ion-label color="primary">Luces encendidas</ion-label>
+          <ion-label color="primary">
+            <h2>Luces encendidas</h2>
+          </ion-label>
           <ion-list lines="none">
             <div  *ngFor="let luz of luces;">
               <div>
                 <ion-item   *ngIf="luz.estado=='on';">
-                <ion-label>
-                <h1> {{luz.ubicacion}} </h1> 
+                <ion-label class = textLigthsOn>
+                {{luz.ubicacion}}
+                    
                 </ion-label>
               </ion-item>
               </div>
