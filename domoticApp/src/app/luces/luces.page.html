@@ -8,11 +8,19 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
+ 
+ 
 <ion-list>
-  <ion-item *ngFor="let luz of luces;let i =index;" [routerLink]="['/luces',luz.ID]">
-     <ion-label>{{luz.ubicacion}}</ion-label>
-     <ion-toggle (ionChange)="turnLight(luz)" [checked]="isLightOn(luz)"></ion-toggle>
+  <ion-item *ngFor="let luz of luces;let i =index;"  >
+    <ion-toggle color="success"  slot="start" (ionChange)="turnLight(luz)" [checked]="isLightOn(luz)"></ion-toggle> 
+    <ion-label>{{luz.ubicacion}}</ion-label>
+     
+
+      <!-- <ion-checkbox slot="end"></ion-checkbox> -->
+      <ion-button expand="block"  [routerLink]="['/luces',luz.ID]">
+        <ion-icon  name="settings"></ion-icon>
+      </ion-button>
+    
     </ion-item>
 </ion-list>
 

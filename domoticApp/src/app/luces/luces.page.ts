@@ -15,7 +15,15 @@ export class LucesPage implements OnInit {
   constructor(private domoticService: DomoticAppService,
               private activatedRoute: ActivatedRoute,
               private loadingController: LoadingController,
-              private alertController: AlertController) { }
+              private alertController: AlertController) { 
+    
+    setInterval(() => {
+      this.domoticService.obtenerLuces()
+        .subscribe(datos => {
+          this.luces = datos;
+        });
+    }, 3000);
+  }
 
   
   public async ngOnInit() {
@@ -30,13 +38,7 @@ export class LucesPage implements OnInit {
               loading.dismiss();
             });
       });
-      setInterval(() => { 
-          this.domoticService.obtenerLuces()
-          .subscribe(datos => {
-            this.luces = datos;
-            this.luces.filter
-          });
-          }, 3000);
+      
   }
   public isLightOn(luz: Luz){ 
     //alert(luz.estado);

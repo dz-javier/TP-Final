@@ -36,6 +36,14 @@ export class EditLuzPage implements OnInit {
       });
   }
   
+public turnLight() {
+    if (this.luz.estado == "on")
+      this.luz.estado = "off";
+    else
+      if (this.luz.estado == "off")
+          this.luz.estado = "on";
+  }
+ 
   public async borrarLuz(luz: Luz) {
     let alert = this.alertController.create({
       header: "Borrar Luz",
@@ -54,10 +62,12 @@ export class EditLuzPage implements OnInit {
     
     
   }
-  public async editarLuz(luz: Luz) {
+  
+  
+  public async editarLuz() {
     const loading = await this.loadingController.create();
     await loading.present();
-    this.domoticService.editarLuz(luz).subscribe(
+    this.domoticService.editarLuz(this.luz).subscribe(
       response => {
         this.luz = response;
          // this.activatedRoute.paramMap.subscribe(
@@ -71,6 +81,7 @@ export class EditLuzPage implements OnInit {
               // });
         });
   }
-   
+
+  
  
 }
