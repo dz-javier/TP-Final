@@ -58,10 +58,7 @@ export class LucesPage implements OnInit {
   }
   public async agregarLuz() {
     let luz: Luz = new Luz();
-    luz.ubicacion = "Living";
-    luz.IP = "192.168.00.125";
-    luz.estado = "off";
-    
+  
     let alert = this.alertController.create({
       header: "Agregar luz",
       inputs: [
@@ -86,7 +83,7 @@ export class LucesPage implements OnInit {
           handler: data => {
             luz.ubicacion = data.ubicacion;
             luz.IP = data.IP;
-            luz.estado = data.estado;
+            luz.estado = "off"; // por defecto en off
             this.domoticService.agregarLuz(luz).subscribe(
                 response => {
                   this.domoticService.obtenerLuces();

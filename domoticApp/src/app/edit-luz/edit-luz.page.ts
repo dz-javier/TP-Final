@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { DomoticAppService } from '../domotic-app.service';
 import { Luz } from '../model/luz';
 
@@ -16,14 +16,9 @@ export class EditLuzPage implements OnInit {
     
   constructor(private activatedRoute: ActivatedRoute,
               private loadingController: LoadingController,
-              private domoticService: DomoticAppService) {
-                setInterval(() => { 
-                 this.domoticService.obtenerLuzPorID(this.luz.ID)
-                    .subscribe(datos => {
-                      this.luz = datos;
-                    });
-                    }, 3000); // actualizar cada 3 segundos  
-    
+              private domoticService: DomoticAppService,
+              private alertController: AlertController) {
+               
                }
 
   public async ngOnInit() {
@@ -40,14 +35,24 @@ export class EditLuzPage implements OnInit {
           });
       });
   }
+  
   public async borrarLuz(luz: Luz) {
-    const loading = await this.loadingController.create();
-    await loading.present();
-    this.domoticService.borrarLuz(luz).subscribe(
-      response => { 
-       // delete this.luz;
-        loading.dismiss();
-      });
+    let alert = this.alertController.create({
+      header: "Borrar Luz",
+      subHeader : "¿Está seguro que desea borrar este elemento?",
+      buttons: [
+        {
+          text: "Aceptar",
+          handler: data => {
+            this.domoticService.borrarLuz(luz).subscribe();
+          } 
+        },
+        "Cancelar"]
+    });
+    
+    (await alert).present();
+    
+    
   }
   public async editarLuz(luz: Luz) {
     const loading = await this.loadingController.create();

@@ -74,7 +74,7 @@ function simuladorSensores() {
   sensores.forEach(item=>{
       if (item.estado=="on"){
         item.valor = Number(item.valor*(1+(Math.random()-0.4999)/20)).toFixed(2);
-      console.log(item);
+      //console.log(item);
       }
     }); 
 }
@@ -88,7 +88,7 @@ function simuladorLuces() {
           item.estado="off";
         else if (item.estado=="off")
             item.estado="on";
-        console.log(item)
+        //sconsole.log(item)
        }
       }); 
     }
@@ -168,7 +168,7 @@ app.get("/luces/:ID",function(req,res){
   });
 
 app.post("/luces",function(req,res){
-    console.log(req.body.IP);
+    console.log(req.body);
     if((req.body.ubicacion!= undefined&&req.body.ubicacion!= "") &&(req.body.estado != undefined) 
         &&  (req.body.IP!= undefined)) {
         idLuces = idLuces +1;
@@ -189,7 +189,8 @@ app.put("/luces/:ID",function(req,res){
             console.log("Actualiza luz")
 						luces[i].ubicacion=req.body.ubicacion;
 						luces[i].IP=req.body.IP;
-						luces[i].estado=req.body.estado;
+            luces[i].estado=req.body.estado;
+            console.log(luces[i]);
 						res.send(req.body);    
 						return;
 					}
